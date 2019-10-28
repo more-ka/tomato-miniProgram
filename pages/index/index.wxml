@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<view class="container">
+  <g-button change text="我是一只按钮"></g-button>
+  <g-button size="mini" text="我是一只按钮"></g-button>
+  <g-button size="mini" change text="我是一只按钮"></g-button>
+  <g-clock></g-clock>
+</view>

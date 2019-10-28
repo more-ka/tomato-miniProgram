@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "g-button": "../../components/g-button/g-button",
+    "g-clock": "../../components/g-clock/g-clock"
+  }
+}

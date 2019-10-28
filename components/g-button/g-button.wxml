@@ -1,0 +1,2 @@
+<!--components/g-button.wxml-->
+<button class="tomatoButton {{size==='mini'&&'mini'}} {{change&&'change'}}">{{text}}</button>

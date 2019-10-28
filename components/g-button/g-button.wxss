@@ -1,0 +1,31 @@
+/* components/g-button.wxss */
+button::after{
+  border: none;
+}
+button:active{
+  opacity: 0.8;
+}
+.tomatoButton {
+  width: 600rpx;
+  height: 100rpx;
+  border-radius: 16rpx;
+  color: #f6705a;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border:2px solid #f6705a;
+  background: transparent;
+}
+
+.tomatoButton.mini {
+  width: 360rpx;
+}
+
+.tomatoButton.change {
+  background: linear-gradient(to right,#ef9b75,#f6705a);
+  box-shadow: 0px 11px 32px 0px rgba(246, 112, 90, 0.30);
+  color: #fff;
+  border:none;
+}

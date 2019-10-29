@@ -14,13 +14,14 @@ button:active{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: 40rpx auto;
   border:2px solid #f6705a;
   background: transparent;
 }
 
 .tomatoButton.mini {
-  width: 360rpx;
+  width: 280rpx;
+  height: 80rpx;
 }
 
 .tomatoButton.change {

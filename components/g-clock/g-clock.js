@@ -4,7 +4,14 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    size: {
+      type: String,
+      value: ''
+    },
+    text: {
+      type: String,
+      value: ''
+    }
   },
 
   /**

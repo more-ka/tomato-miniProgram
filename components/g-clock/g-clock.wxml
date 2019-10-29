@@ -1,5 +1,5 @@
 <!-- components/g-button/g-clock.wxml -->
 <view class="clock">
-  <image src="../../images/tomato.png" />
-  <text>开始番茄</text>
+  <image src="../../images/tomato.png" class="{{size}}"/>
+  <text>{{text}}</text>
 </view>

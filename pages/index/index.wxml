@@ -1,7 +1,10 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="container">
-  <g-button change text="我是一只按钮"></g-button>
-  <g-button size="mini" text="我是一只按钮"></g-button>
-  <g-button size="mini" change text="我是一只按钮"></g-button>
-  <g-clock></g-clock>
+  <!-- <g-button change text="我是一只按钮"></g-button> -->
+  <!-- <g-button size="mini" text="我是一只按钮"></g-button> -->
+  <!-- <g-button size="mini" change text="我是一只按钮"></g-button> -->
+  <!-- <g-clock></g-clock> -->
+  <g-button class="click" bind:tap="click" text="添加任务" size="mini"></g-button>
+  <g-confirm placeholder="默认值" bind:sureClick="sureClick" bind:cancelClick="cancelClick" visible="{{visible}}"></g-confirm>
+  <view >用户输入的是--{{inputValue}}</view>
 </view>

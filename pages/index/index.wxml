@@ -2,10 +2,12 @@
 <view class="container">
   <scroll-view class="todoList" scroll-y="true">
     <view class="item" wx:for="{{todoList}}" wx:key="index">
-      <view class="select {{item.finished===true?'active':''}}"  data-index="{{index}}" bind:tap="selectedClick">
-      </view>
+      <image wx:if="{{!item.finished}}" class="selectIcon"  bind:tap="selectedClick" src="/images/select.png"  data-index="{{index}}" />
+      <image wx:else class="selectIcon {{item.finished===true?'active':''}}"  bind:tap="selectedClick"   data-index="{{index}}" src="/images/select_active.png" />
       <view class="content">
         {{item.text}}
+      </view>
+            <view class="select">
       </view>
     </view>
   </scroll-view>
@@ -14,6 +16,8 @@
   <!-- <g-button size="mini" change text="我是一只按钮"></g-button> -->
   <g-button class="click" bind:tap="showConfirm" text="添加任务" size="mini"></g-button>
   <g-confirm placeholder="默认值" bind:sureClick="sureClick" bind:cancelClick="cancelClick" visible="{{visible}}"></g-confirm>
-  <g-clock size="mini" text="开始番茄任务"></g-clock>
+  <navigator class="toTomato" url="/pages/tomato/tomato">
+    <g-clock size="mini" text="开始番茄任务"></g-clock>
+  </navigator>
 
 </view>

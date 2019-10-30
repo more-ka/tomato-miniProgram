@@ -1,5 +1,5 @@
 <!-- components/g-button/g-clock.wxml -->
 <view class="clock">
   <image src="../../images/tomato.png" class="{{size}}"/>
-  <text>{{text}}</text>
+  <text style="font-size:{{fontSize+'rpx'}}">{{text}}</text>
 </view>

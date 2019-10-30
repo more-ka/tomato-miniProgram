@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/tomato/tomato",
     "pages/logs/logs"
   ],
   "window": {
@@ -13,17 +14,19 @@
   "tabBar": {
     "color": "#000000",
     "selectedColor": "#f6705a",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "专注",
-      "iconPath": "images/total.png",
-      "selectedIconPath": "images/total-active.png"
-    },
-    {
-      "pagePath": "pages/logs/logs",
-      "text": "我的",
-      "iconPath": "images/me.png",
-      "selectedIconPath": "images/me-active.png"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "专注",
+        "iconPath": "images/total.png",
+        "selectedIconPath": "images/total-active.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "我的",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me-active.png"
+      }
+    ]
   }
 }

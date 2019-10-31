@@ -1,0 +1,78 @@
+/* pages/profile/profile.wxss */
+.container{
+  background: #f2f2f2;
+  height: 100vh;
+}
+.header{
+  display: flex;
+  padding: 0 22rpx;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 24rpx;
+}
+
+.header .picture open-data{
+  display: inline-block;
+  border-radius: 80rpx;
+  overflow: hidden;
+  width: 160rpx;
+  height: 160rpx;
+}
+.header .userName{
+  margin: 0rpx 80rpx 0 40rpx;
+  font-size: 32rpx; 
+  margin-top: -80rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 300rpx;
+}
+
+.header .contact{
+  background: transparent;
+  color: orange;
+  font-size: 28rpx; 
+}
+.header .contact::after{
+  border: none;
+}
+
+.title{
+  font-size: 32rpx; 
+  position: relative;
+  display: inline-block;
+  margin-bottom: 16rpx;
+}
+.title::after{
+  content: "";
+  display: inline-block;
+  position: absolute;
+  bottom: 0rpx;
+  left: 0;
+  width: 100%;
+  height: 12rpx;
+  background: #f6705a;
+  opacity: 0.4;
+}
+
+.item{
+  background: #fff;
+  margin:24rpx;
+  border-radius: 10rpx;
+  padding: 36rpx;
+  box-shadow: 0 4rpx 4rpx 0 rgba(0, 0, 0, 0.3)
+}
+.item .title{
+  font-weight: bold;
+}
+.item .content{
+  display: flex;
+  margin-bottom: 12rpx;
+}
+.item .content .time{
+  width: 20%;
+}
+.item .content .text{
+  flex: 1;
+}

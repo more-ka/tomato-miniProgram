@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/profile/profile",
     "pages/index/index",
-    "pages/tomato/tomato",
-    "pages/logs/logs"
+    "pages/tomato/tomato"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,7 +22,7 @@
         "selectedIconPath": "images/total-active.png"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/profile/profile",
         "text": "我的",
         "iconPath": "images/me.png",
         "selectedIconPath": "images/me-active.png"

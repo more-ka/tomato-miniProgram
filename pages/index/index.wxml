@@ -19,5 +19,4 @@
   <navigator class="toTomato" url="/pages/tomato/tomato">
     <g-clock size="mini" text="开始番茄任务"></g-clock>
   </navigator>
-
 </view>

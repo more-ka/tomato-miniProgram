@@ -36,14 +36,14 @@ Page({
       showConfirm: true,
       again: true
     });
-    this.startTimer();
   },
   sureAgain() {
     this.setData({
-      defaultTime: 1500,
+      defaultTime: 5,
       showConfirm: false,
       again: false
     });
+    this.startTimer();
   },
   cancelAgain() {
     this.setData({

@@ -7,30 +7,37 @@ Page({
     http.get("/todos");
   },
   login(event) {
-    let encrypted_data = event.detail.encryptedData
-    let iv = event.detail.iv
-    let code
+    let code;
+    let iv = event.detail.iv;
+    let encrypted_data = event.detail.encryptedData;
+    this.wxLogin(code, iv, encrypted_data);
+  },
+  wxLogin(code, iv, encrypted_data) {
     wx.login({
-      success: function(res) {
-        code = res.code
-        http.post('/sign_in/mini_program_user',{
-          code,
-          iv,
-          encrypted_data,
-          app_id,
-          app_secret
-        })
-        .then(response=>{
-          console.log(response);
-          
-          wx.setStorageSync('me', response.data.resource)
-          wx.setStorageSync('X-token', response.header["X-token"])
-          wx.reLaunch({
-            url: '/pages/index/index'
-          })
-        })
-      },
-      fail: function(res) {}
+      success: res => {
+        this.loginMe(res, code, iv, encrypted_data);
+      }
     });
+  },
+  loginMe(res, code, iv, encrypted_data) {
+    code = res.code;
+    http
+      .post("/sign_in/mini_program_user", {
+        code,
+        iv,
+        encrypted_data,
+        app_id,
+        app_secret
+      })
+      .then(response => {
+        this.saveMessage(response);
+        wx.reLaunch({
+          url: "/pages/index/index"
+        });
+      });
+  },
+  saveMessage(response) {
+    wx.setStorageSync("me", response.data.resource);
+    wx.setStorageSync("X-token", response.header["X-token"]);
   }
 });

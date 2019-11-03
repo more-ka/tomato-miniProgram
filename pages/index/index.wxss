@@ -21,6 +21,7 @@
   background: #fff;
   border-radius: 12rpx;
   justify-content: center;
+  transition: all 0.5s;
 }
 .selectIcon{
   width: 46rpx;

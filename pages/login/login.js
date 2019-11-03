@@ -4,7 +4,7 @@ const { http } = require("../../utils/http.js");
 Page({
   data: {},
   onShow() {
-    http.get("/todos");
+    // http.get("/todos");
   },
   login(event) {
     let code;

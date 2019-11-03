@@ -1,10 +1,8 @@
 // components/g-confirm/g-confirm.js
 Component({
-  /**
-   * 组件的属性列表
-   */
   data: {
-    value: ""
+    value: "",
+    text: ""
   },
   properties: {
     placeholder: {
@@ -14,11 +12,12 @@ Component({
     visible: {
       type: Boolean,
       value: false
+    },
+    text: {
+      type: String,
+      value: ""
     }
   },
-  /**
-   * 组件的方法列表
-   */
   methods: {
     sureClick() {
       this.triggerEvent("sureClick",this.data.value);

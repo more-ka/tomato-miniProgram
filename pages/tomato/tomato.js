@@ -1,26 +1,13 @@
 // pages/tomato/tomato.js
+const {http} = require('../../utils/http.js')
 Page({
+  tomato: {},
   data: {
     defaultTime: 5,
     time: "",
     timer: null,
     showConfirm: false,
     again: false
-  },
-  // 时间处理
-  formatTime() {
-    let minute = Math.floor(this.data.defaultTime / 60);
-    let second = Math.floor(this.data.defaultTime % 60);
-    this.setData({
-      time: `${this.handleTime(minute)}:${this.handleTime(second)}`
-    });
-  },
-  // 时间格式化
-  handleTime(s) {
-    if ((s + "").length === 1) {
-      return "0" + s;
-    }
-    return s;
   },
   // 放弃按钮被点击
   abandon() {
@@ -38,10 +25,13 @@ Page({
     });
   },
   sureAgain() {
-    this.setData({
-      defaultTime: 5,
-      showConfirm: false,
-      again: false
+    http.post('/tomatoes').then(response=>{
+      this.tomato = response.data.resource,
+        this.setData({
+          defaultTime: 5,
+          showConfirm: false,
+          again: false
+        })
     });
     this.startTimer();
   },
@@ -50,10 +40,13 @@ Page({
       showConfirm: false
     });
   },
-  sureAbandon() {
-    wx.navigateBack({
-      to: -1
-    });
+  sureAbandon(e) {
+    http.put(`/tomatoes/${this.tomato.id}`,{description: e.detail,aborted:true})
+      .then(response=>{
+        wx.navigateBack({
+          to: -1
+        });
+      })
   },
   cancelAbandon() {
     this.setData({
@@ -72,7 +65,31 @@ Page({
       }
     }, 1000);
   },
-  onLoad: function(options) {
-    this.startTimer();
-  }
+  onShow: function(options) {
+    http.post('/tomatoes').then(response=>{
+        this.tomato = response.data.resource
+      this.startTimer();
+    })
+  },
+  onHide(){
+    http.put(`/tomatoes/${this.tomato.id}`,{description: '退出放弃',aborted:true})
+  },
+  onUnload(){
+    http.put(`/tomatoes/${this.tomato.id}`,{description: '退出放弃',aborted:true})
+  },
+  // 时间处理
+  formatTime() {
+    let minute = Math.floor(this.data.defaultTime / 60);
+    let second = Math.floor(this.data.defaultTime % 60);
+    this.setData({
+      time: `${this.handleTime(minute)}:${this.handleTime(second)}`
+    });
+  },
+  // 时间格式化
+  handleTime(s) {
+    if ((s + "").length === 1) {
+      return "0" + s;
+    }
+    return s;
+  },
 });

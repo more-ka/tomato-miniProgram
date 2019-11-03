@@ -2,20 +2,23 @@
 <view class="container">
   <scroll-view class="todoList" scroll-y="true">
     <view class="item" wx:for="{{todoList}}" wx:key="index" wx:if="{{!item.completed}}">
-      <image wx:if="{{!item.completed}}" class="selectIcon"  bind:tap="finished" src="/images/select.png"  data-index="{{index}}" data-id="{{item.id}}" />
-      <image wx:else class="selectIcon {{item.completed===true?'active':''}}"  data-index="{{index}}" src="/images/select_active.png" />
-      <view class="content">
-        {{item.description}}-{{item.id}}
+      <image wx:if="{{!item.completed}}" class="selectIcon" bind:tap="finished" src="/images/select.png"
+             data-index="{{index}}" data-id="{{item.id}}"/>
+      <image wx:else class="selectIcon {{item.completed===true?'active':''}}" data-index="{{index}}"
+             src="/images/select_active.png"/>
+      <view class="content" bind:tap="updateText" data-content="{{item.description}}" data-index="{{index}}"
+            data-id="{{item.id}}">
+        {{item.description}}
       </view>
-            <view class="select">
+      <view class="select">
       </view>
     </view>
   </scroll-view>
-  <!-- <g-button change text="我是一只按钮"></g-button> -->
-  <!-- <g-button size="mini" text="我是一只按钮"></g-button> -->
-  <!-- <g-button size="mini" change text="我是一只按钮"></g-button> -->
   <g-button class="click" bind:tap="showConfirm" text="添加任务" size="mini"></g-button>
-  <g-confirm placeholder="默认值" bind:sureClick="confirmCreate" bind:cancelClick="cancelCreate" visible="{{visible}}"></g-confirm>
+  <g-confirm placeholder="默认值" bind:sureClick="confirmCreate" bind:cancelClick="cancelCreate"
+             visible="{{visible}}"></g-confirm>
+  <g-confirm text="{{innerText}}" bind:sureClick="confirmUpdate" bind:cancelClick="cancelUpdate"
+             visible="{{updateConfirm}}"></g-confirm>
   <navigator class="toTomato" url="/pages/tomato/tomato">
     <g-clock size="mini" text="开始番茄任务"></g-clock>
   </navigator>

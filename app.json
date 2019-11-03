@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/profile/profile",
     "pages/login/login",
+    "pages/profile/profile",
     "pages/tomato/tomato"
   ],
   "window": {

@@ -10,11 +10,13 @@
     <button open-type="contact" class="contact">问题反馈</button>
   </view>
   <view class="main">
-    <view class="item" wx:for="{{list}}" wx:key="key" wx:for-index="key">
-      <view class="title">{{key}}</view>
-      <view class="content" wx:for="{{list[key]}}" wx:key="index">
-        <view class="time">{{item.time}}</view>
-        <view class="text">{{item.text}}</view>
+    <text class="headline">我完成的任务</text>
+    <view class="item" wx:for="{{todos}}" wx:key="key" wx:for-index="todo">
+      <wxs src="../../utils/format.wxs" module="format" />
+      <view class="title">{{format.formatMouth(todo)}}</view>
+      <view class="content" wx:for="{{todos[todo]}}" wx:key="index">
+        <view class="time">{{format.subTime(item.created_at)}}</view>
+        <view class="text">{{item.description}}</view>
       </view>
     </view>
   </view>

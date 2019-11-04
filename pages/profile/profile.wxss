@@ -37,7 +37,13 @@
 .header .contact::after{
   border: none;
 }
-
+.main .headline{
+  background: #fff;
+  display: block;
+  font-size: 32rpx;
+  padding: 20rpx;
+  font-weight: bold;
+}
 .title{
   font-size: 32rpx; 
   position: relative;
@@ -63,6 +69,7 @@
   padding: 36rpx;
   box-shadow: 0 4rpx 4rpx 0 rgba(0, 0, 0, 0.3)
 }
+
 .item .title{
   font-weight: bold;
 }
@@ -75,4 +82,7 @@
 }
 .item .content .text{
   flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }

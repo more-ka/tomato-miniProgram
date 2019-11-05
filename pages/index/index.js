@@ -14,9 +14,19 @@ Page({
     updateConfirm: false,
     updateIndex: -1,
     updateId: -1,
-    loginStatus: false
+    loginStatus: false,
+    taskId: -1,
+    taskContent: ''
   },
   //事件处理函数
+  currentTask(e){
+    let id = e.currentTarget.dataset.id
+    let content = e.currentTarget.dataset.content
+    this.setData({
+      taskId: id,
+      taskContent: content
+    })
+  },
   updateText(e){
     let content = e.currentTarget.dataset.content
     this.updateIndex = e.currentTarget.dataset.index
@@ -33,8 +43,15 @@ Page({
         this.data.todoList[this.updateIndex]=newTodo
         this.setData({
           updateConfirm: false,
-          todoList: this.data.todoList
+          todoList: this.data.todoList,
+          taskId: newTodo.id,
+          taskContent: newTodo.description
         })
+      })
+      .catch(error=>{
+        if(error.statusCode===422){
+          console.log('内容未修改');
+        }
       })
   },
   finished(e) {
@@ -62,11 +79,13 @@ Page({
     let text = event.detail;
     if (text) {
       http.post("/todos", { description: text }).then(response => {
-        let newTodo = [response.data.resource];
+        let newTodo = [response.data.resource]
         let newList = newTodo.concat(this.data.todoList);
         this.setData({
           visible: false,
-          todoList: newList
+          todoList: newList,
+          taskId: newTodo[0].id,
+          taskContent: newTodo[0].description
         });
       });
     }

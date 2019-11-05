@@ -17,15 +17,20 @@
 .todoList .item{
   display: flex;
   margin: 16rpx 0;
-  padding: 16rpx 0;
+  padding: 12rpx 0;
   background: #fff;
   border-radius: 12rpx;
   justify-content: center;
   transition: all 0.5s;
+  border: 1px solid transparent;
 }
-.selectIcon{
+.todoList .item.active{
+  border: 1px solid #f6705a;
+}
+.updateText,
+.deleteIcon{
   width: 46rpx;
-  height: 40rpx;
+  height: 46rpx;
   margin: auto 20rpx;
   transition: all .3s;
 }
@@ -34,8 +39,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
   -webkit-box-orient: vertical;
 }
 .todoList .item .select{

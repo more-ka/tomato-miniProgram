@@ -19,7 +19,7 @@ const _http = (method,url,data)=>{
                             url: '/pages/login/login',
                         })
                     }
-                    reject(statusCode,res)
+                    reject(res)
                 }else{
                     resolve(res)
                 }

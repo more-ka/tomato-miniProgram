@@ -4,17 +4,19 @@
     <view class="tips" wx:if="{{!loginStatus}}">登录之后才能添加任务,启动番茄闹钟</view>
     <view class="tips" wx:if="{{!loginStatus}}">点击左边的图标完成任务,任务完成后会从任务列表里删除,可以在用户详情页查看已完成任务</view>
     <view class="tips" wx:if="{{!loginStatus}}">点击右边的图标选择当前执行任务</view>
-    <view class="item" wx:for="{{todoList}}" wx:key="index" wx:if="{{!item.completed}}">
-      <image wx:if="{{!item.completed}}" class="selectIcon" bind:tap="finished" src="/images/select.png"
-             data-index="{{index}}" data-id="{{item.id}}"/>
-      <image wx:else class="selectIcon {{item.completed===true?'active':''}}" data-index="{{index}}"
-             src="/images/select_active.png"/>
-      <view class="content" bind:tap="updateText" data-content="{{item.description}}" data-index="{{index}}"
-            data-id="{{item.id}}">
+    <view class="item {{item.id===taskId?'active':''}}" wx:for="{{todoList}}" wx:key="index" wx:if="{{!item.completed}}"
+          bind:tap="currentTask" data-id="{{item.id}}" data-content="{{item.description}}">
+      <view class="select" bind:tap="currentTask" wx:if="{{item.id!==taskId}}" data-id="{{item.id}}"
+            data-content="{{item.description}}">
+      </view>
+      <image class="updateText" wx:else bind:tap="updateText"  data-content="{{item.description}}" data-index="{{index}}"
+             src="/images/modify.png"
+              data-id="{{item.id}}"/>
+      <view class="content">
         {{item.description}}
       </view>
-      <view class="select">
-      </view>
+      <image wx:if="{{item.id===taskId}}" class="deleteIcon" data-index="{{index}}" bind:tap="finished"
+             src="/images/delete.png"/>
     </view>
   </scroll-view>
   <g-button class="click" bind:tap="showConfirm" text="添加任务" size="mini"></g-button>
@@ -23,6 +25,7 @@
   <g-confirm text="{{innerText}}" bind:sureClick="confirmUpdate" bind:cancelClick="cancelUpdate"
              visible="{{updateConfirm}}"></g-confirm>
   <navigator class="toTomato" url="/pages/tomato/tomato">
-    <g-clock size="mini" text="开始番茄任务"></g-clock>
+    <g-clock size="mini" text="开始番茄任务" taskContent="{{taskContent}}"></g-clock>
   </navigator>
+  <!--尝试把tomato封装成组件,接收content,修改首页点击番茄逻辑-->
 </view>

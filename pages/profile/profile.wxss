@@ -1,7 +1,8 @@
 /* pages/profile/profile.wxss */
 .container{
   background: #f2f2f2;
-  height: 100vh;
+  /*height: 100vh;*/
+  /*border: 1px solid red;*/
 }
 .header{
   display: flex;
@@ -21,7 +22,7 @@
 }
 .header .userName{
   margin: 0rpx 80rpx 0 40rpx;
-  font-size: 32rpx; 
+  font-size: 40rpx; 
   margin-top: -80rpx;
   text-overflow: ellipsis;
   white-space: nowrap;

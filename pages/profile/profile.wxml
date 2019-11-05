@@ -5,7 +5,8 @@
       <open-data type="userAvatarUrl"></open-data>
     </view>
     <view class="userName title">
-      <open-data type="userNickName"></open-data>
+      <navigator url="/pages/login/login" wx:if="{{!loginStatus}}">点击登录账号</navigator>
+      <open-data type="userNickName" wx:else></open-data>
     </view>
     <button open-type="contact" class="contact">问题反馈</button>
   </view>
@@ -14,7 +15,7 @@
     <view class="item" wx:for="{{todos}}" wx:key="key" wx:for-index="todo">
       <wxs src="../../utils/format.wxs" module="format" />
       <view class="title">{{format.formatMouth(todo)}}</view>
-      <view class="content" wx:for="{{todos[todo]}}" wx:key="index">
+      <view class="content" wx:for="{{todos[todo]}}" wx:key="index" wx:if="{{item.completed}}">
         <view class="time">{{format.subTime(item.created_at)}}</view>
         <view class="text">{{item.description}}</view>
       </view>

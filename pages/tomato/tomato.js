@@ -3,7 +3,7 @@ const {http} = require('../../utils/http.js')
 Page({
   tomato: {},
   data: {
-    defaultTime: 5,
+    defaultTime: 1500,
     time: "",
     timer: null,
     showConfirm: false,
@@ -28,7 +28,7 @@ Page({
     http.post('/tomatoes').then(response=>{
       this.tomato = response.data.resource,
         this.setData({
-          defaultTime: 5,
+          defaultTime: 1500,
           showConfirm: false,
           again: false
         })

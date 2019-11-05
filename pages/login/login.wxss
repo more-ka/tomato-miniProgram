@@ -42,11 +42,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 40rpx auto;
+  margin: 40rpx auto 20rpx;
   background: linear-gradient(to right,#ef9b75,#f6705a);
   box-shadow: 0px 11px 32px 0px rgba(246, 112, 90, 0.30);
   color: #fff;
 }
 button:active{
+  opacity: 0.8;
+}
+#cancelLogin{
+  background: #fff;
+  color: #f6705a;
+  border: 2px solid #f6705a;
+  box-shadow: none;
+}
+#cancelLogin:active{
   opacity: 0.8;
 }

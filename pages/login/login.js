@@ -12,6 +12,11 @@ Page({
     let encrypted_data = event.detail.encryptedData;
     this.wxLogin(code, iv, encrypted_data);
   },
+  cancelLogin(){
+    wx.navigateBack({
+      delta: -1
+    })
+  },
   wxLogin(code, iv, encrypted_data) {
     wx.login({
       success: res => {
@@ -31,6 +36,7 @@ Page({
       })
       .then(response => {
         this.saveMessage(response);
+        getApp().globalData.loginStatus = true
         wx.reLaunch({
           url: "/pages/index/index"
         });

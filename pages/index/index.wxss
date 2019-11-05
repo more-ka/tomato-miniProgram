@@ -52,3 +52,10 @@
   width: 40rpx;
   height: 40rpx;
 }
+.tips{
+  background: #0e141f;
+  padding: 8rpx 20rpx;
+  color: #ffcb36;
+  font-size: 32rpx;
+  /*text-align: center;*/
+}

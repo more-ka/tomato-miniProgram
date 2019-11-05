@@ -13,7 +13,8 @@ Page({
     todoList: [],
     updateConfirm: false,
     updateIndex: -1,
-    updateId: -1
+    updateId: -1,
+    loginStatus: false
   },
   //事件处理函数
   updateText(e){
@@ -75,15 +76,16 @@ Page({
       updateConfirm: false
     })
   },
-  cancelCreate() {
+  cancelCreate(){
     this.setData({
       visible: false
     });
   },
-  onLoad: function() {
+  onShow: function() {
     http.get("/todos?completed=false").then(response => {
       this.setData({
-        todoList: response.data.resources
+        todoList: response.data.resources,
+        loginStatus: getApp().globalData.loginStatus
       });
     });
   }

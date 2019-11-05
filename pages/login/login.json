@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "g-button": "../../components/g-button/g-button"
+  }
 }

@@ -2,7 +2,7 @@
 Component({
   data: {
     value: "",
-    text: ""
+    text: ""// 接受的文本框placeholder
   },
   properties: {
     placeholder: {
@@ -21,9 +21,15 @@ Component({
   methods: {
     sureClick() {
       this.triggerEvent("sureClick",this.data.value);
+      this.setData({
+        text: ""
+      })
     },
     cancelClick() {
       this.triggerEvent("cancelClick");
+      this.setData({
+        text: ""
+      })
     },
     watchInput(event) {
       this.data.value = event.detail.value;

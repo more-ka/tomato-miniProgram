@@ -19,6 +19,15 @@ Page({
     taskContent: ''
   },
   //事件处理函数
+  startTomato(){
+    if(this.data.taskContent===''){
+      wx.showToast({title: "请先选择任务",icon:"none"})
+      return
+    }
+    wx.navigateTo({
+      url: `../tomato/tomato?content=${this.data.taskContent}&id=${this.data.taskId}`
+    })
+  },
   currentTask(e){
     let id = e.currentTarget.dataset.id
     let content = e.currentTarget.dataset.content
@@ -33,7 +42,7 @@ Page({
     this.updateId = e.currentTarget.dataset.id
     this.setData({
       updateConfirm: true,
-      innerText: content,
+      innerText: content
     })
   },
   confirmUpdate(e){
@@ -50,7 +59,7 @@ Page({
       })
       .catch(error=>{
         if(error.statusCode===422){
-          console.log('内容未修改');
+          wx.showToast({title:'内容未修改',icon:"none",duration:1500})
         }
       })
   },
@@ -67,7 +76,8 @@ Page({
       this.data.todoList[index] = newTodo
       this.setData({
         todoList: this.data.todoList
-      });
+      })
+      wx.showToast({title:'任务删除成功',icon:"success",duration:1500})
     })
   },
   showConfirm() {
@@ -77,7 +87,9 @@ Page({
   },
   confirmCreate(event) {
     let text = event.detail;
-    if (text) {
+    if(!text){
+      wx.showToast({title:'未输入任何内容',icon:"none",duration:1500})
+    }else {
       http.post("/todos", { description: text }).then(response => {
         let newTodo = [response.data.resource]
         let newList = newTodo.concat(this.data.todoList);
@@ -104,7 +116,9 @@ Page({
     http.get("/todos?completed=false").then(response => {
       this.setData({
         todoList: response.data.resources,
-        loginStatus: getApp().globalData.loginStatus
+        loginStatus: getApp().globalData.loginStatus,
+        taskId: -1,
+        taskContent: ''
       });
     });
   }

@@ -1,4 +1,26 @@
 /* pages/tomato/tomato.wxss */
+.container{
+  text-align: center;
+}
+.container .title{
+  margin-top: 60rpx;
+}
+.container .title text{
+  display: block;
+}
+.container .title text:first-child{
+  font-size: 28rpx;
+  margin-bottom: 16rpx;
+}
+.container .title .taskContent{
+  text-align: center;
+  color: #ffcb36;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+  margin: auto;
+}
 .clock{
   margin-top: 200rpx;
   margin-bottom: 80rpx;

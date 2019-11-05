@@ -62,5 +62,5 @@
   padding: 8rpx 20rpx;
   color: #ffcb36;
   font-size: 32rpx;
-  /*text-align: center;*/
+  text-align: center;
 }

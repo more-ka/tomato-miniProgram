@@ -3,11 +3,13 @@ const {http} = require('../../utils/http.js')
 Page({
   tomato: {},
   data: {
-    defaultTime: 1500,
+    defaultTime: 300000,
     time: "",
     timer: null,
     showConfirm: false,
-    again: false
+    again: false,
+    taskContent: '',
+    taskId: -1
   },
   // 放弃按钮被点击
   abandon() {
@@ -24,13 +26,16 @@ Page({
       again: true
     });
   },
-  sureAgain() {
-    http.post('/tomatoes').then(response=>{
-      this.tomato = response.data.resource,
-        this.setData({
-          defaultTime: 1500,
+  sureAgain(e) {
+    let description = e.detail
+    http.post("/todos", { description: description }).then(response=>{
+      this.tomato = response.data.resource
+      this.setData({
+          defaultTime: 30,
           showConfirm: false,
-          again: false
+          again: false,
+          taskId: this.tomato.id,
+        taskContent: this.tomato.description
         })
     });
     this.startTimer();
@@ -60,6 +65,7 @@ Page({
       this.data.defaultTime = this.data.defaultTime - 1;
       this.formatTime();
       if (this.data.defaultTime === 0) {
+        this.taskFinish()
         clearInterval(this.timer);
         this.timer = null;
       }
@@ -92,4 +98,22 @@ Page({
     }
     return s;
   },
+  onLoad(options) {
+    this.setData({
+      taskContent: options.content,
+      taskId: options.id
+    })
+  },
+  quickFinish(){
+    this.setData({
+      defaultTime:1
+    })
+  },
+  taskFinish() {
+    http.put(`/todos/${this.data.taskId}`, {completed: true})
+    this.setData({
+      taskId: -1,
+      taskContent: ''
+    })
+  }
 });

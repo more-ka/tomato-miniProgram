@@ -1,5 +1,5 @@
 <!-- pages/profile/profile.wxml -->
-<view class="container">
+<view class="container" wx:if="{{todos}}">
   <view class="header">
     <view class="picture" wx:if="{{loginStatus}}">
       <open-data type="userAvatarUrl"></open-data>
@@ -11,7 +11,8 @@
       <navigator url="/pages/login/login" wx:if="{{!loginStatus}}">点击登录账号</navigator>
       <open-data type="userNickName" wx:else></open-data>
     </view>
-    <button open-type="contact" class="contact">问题反馈</button>
+    <button class="logout {{loginStatus&&'active'}}" bind:tap="logout">退出</button>
+    <button open-type="contact" class="contact">反馈</button>
   </view>
   <view class="main">
     <text class="headline">我完成的任务</text>

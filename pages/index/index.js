@@ -84,6 +84,7 @@ Page({
   },
   showConfirm() {
     if(!this.data.loginStatus){
+      console.log('ceshi')
       wx.showToast({title:'请登录',icon: 'none'})
       return
     }

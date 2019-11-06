@@ -1,7 +1,7 @@
 <!--components/g-confirm/g-confirm.wxml-->
 <view class="confirmWrapper" wx:if="{{visible}}">
   <view class="confirm">
-  <textarea class="input" placeholder="{{placeholder}}" bind:input="watchInput" value="{{text}}" ></textarea>
+  <textarea class="input" placeholder="{{placeholder}}" bind:input="watchInput" value="{{text}}" autofocus></textarea>
   <view class="actions">
     <view class="sure" bind:tap="sureClick">确定</view>
     <view class="cancel" bind:tap="cancelClick">取消</view>

@@ -36,11 +36,21 @@ Page({
       })
       .then(response => {
         this.saveMessage(response);
-        getApp().globalData.loginStatus = true
+        wx.showToast({
+          title: '登录成功'
+        })
         wx.reLaunch({
           url: "/pages/index/index"
         });
-      });
+      })
+      .catch(error=>{
+        if(error.statusCode===500){
+          wx.showToast({
+            title: '授权失败,请重试',
+            icon: 'none'
+          })
+        }
+      })
   },
   saveMessage(response) {
     wx.setStorageSync("me", response.data.resource);

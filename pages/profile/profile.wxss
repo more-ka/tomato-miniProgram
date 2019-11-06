@@ -1,8 +1,6 @@
 /* pages/profile/profile.wxss */
 .container{
   background: #f2f2f2;
-  /*height: 100vh;*/
-  /*border: 1px solid red;*/
 }
 .header{
   display: flex;
@@ -11,6 +9,7 @@
   align-items: center;
   background: #fff;
   margin-bottom: 24rpx;
+  height: 140rpx;
 }
 
 .header .picture open-data{
@@ -23,8 +22,8 @@
 .none{
   border-radius: 80rpx;
   overflow: hidden;
-  width: 160rpx;
-  height: 160rpx;
+  width: 130rpx;
+  height: 130rpx;
   background: #fff;
 }
 .header .userName{
@@ -37,11 +36,20 @@
   max-width: 300rpx;
 }
 
-.header .contact{
+.header .contact,
+.header .logout{
   background: transparent;
   color: orange;
-  font-size: 28rpx; 
+  font-size: 30rpx; 
+  width: 80rpx;
 }
+.header .logout{
+  color: grey;
+}
+.header .logout.active{
+  color: orange;
+}
+.header .logout::after,
 .header .contact::after{
   border: none;
 }
@@ -93,4 +101,8 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+button{
+  padding: 0;
+  /* margin:8rpx; */
 }

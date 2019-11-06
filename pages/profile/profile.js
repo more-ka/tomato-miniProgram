@@ -7,6 +7,19 @@ Page({
     loginStatus: false
   },
    // 生命周期函数--监听页面显示
+   logout(){
+     wx.clearStorage()
+    this.setData({
+      todos: {},
+      loginStatus: false
+    })
+     wx.reLaunch({
+       url: '/pages/index/index'
+     });
+     wx.showToast({
+       title: '退出登录成功'
+     })
+   },
   onShow: function () {
     if(wx.getStorageSync('X-token')){
       this.setData({

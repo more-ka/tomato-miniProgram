@@ -1,7 +1,13 @@
 /* pages/tomato/tomato.wxss */
+.container{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 .container .title{
   margin-top: 60rpx;
   text-align: center;
+  height: 100rpx;
 }
 .container .title text{
   display: block;
@@ -20,6 +26,11 @@
   margin: auto;
 }
 .clock{
-  margin-top: 200rpx;
-  margin-bottom: 80rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.button{
+  height:500rpx;
 }

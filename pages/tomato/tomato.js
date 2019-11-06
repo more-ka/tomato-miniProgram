@@ -3,7 +3,7 @@ const {http} = require('../../utils/http.js')
 Page({
   tomato: {},
   data: {
-    defaultTime: 300000,
+    defaultTime: 1500,
     time: "",
     timer: null,
     showConfirm: false,
@@ -31,7 +31,7 @@ Page({
     http.post("/todos", { description: description }).then(response=>{
       this.tomato = response.data.resource
       this.setData({
-          defaultTime: 30,
+          defaultTime: 1500,
           showConfirm: false,
           again: false,
           taskId: this.tomato.id,
@@ -46,7 +46,8 @@ Page({
     });
   },
   sureAbandon(e) {
-    http.put(`/tomatoes/${this.tomato.id}`,{description: e.detail,aborted:true})
+    http.put(`/todos/${this.data.taskId}`, {completed: false})
+    // http.put(`/tomatoes/${this.taskId}`,{description: e.detail,aborted:true})
       .then(response=>{
         wx.navigateBack({
           to: -1
@@ -110,10 +111,12 @@ Page({
     })
   },
   taskFinish() {
-    http.put(`/todos/${this.data.taskId}`, {completed: true})
-    this.setData({
-      taskId: -1,
-      taskContent: ''
+    http.put(`/todos/${this.data.taskId}`, {completed: true}).then(res=>{
+      this.setData({
+        taskId: -1,
+        taskContent: ''
+      })
+      wx.showToast({title: '任务已完成'})
     })
   }
 });

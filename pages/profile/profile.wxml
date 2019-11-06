@@ -1,8 +1,11 @@
 <!-- pages/profile/profile.wxml -->
 <view class="container">
   <view class="header">
-    <view class="picture">
+    <view class="picture" wx:if="{{loginStatus}}">
       <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="none" wx:else>
+      <open-data></open-data>
     </view>
     <view class="userName title">
       <navigator url="/pages/login/login" wx:if="{{!loginStatus}}">点击登录账号</navigator>
@@ -16,7 +19,7 @@
       <wxs src="../../utils/format.wxs" module="format" />
       <view class="title">{{format.formatMouth(todo)}}</view>
       <view class="content" wx:for="{{todos[todo]}}" wx:key="index" wx:if="{{item.completed}}">
-        <view class="time">{{format.subTime(item.created_at)}}</view>
+        <view class="time">{{format.subTime(item.updated_at)}}</view>
         <view class="text">{{item.description}}</view>
       </view>
     </view>

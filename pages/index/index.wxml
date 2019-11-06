@@ -1,7 +1,6 @@
 <!-- index.wxml -->
 <view class="container">
   <scroll-view class="todoList" scroll-y="true">
-    <view class="tips" wx:if="{{!loginStatus}}">登录之后才能添加任务,启动番茄闹钟</view>
     <view class="item {{item.id===taskId?'active':''}}" wx:for="{{todoList}}" wx:key="index" wx:if="{{!item.completed}}"
           bind:tap="currentTask" data-id="{{item.id}}" data-content="{{item.description}}">
       <view class="select" bind:tap="currentTask" wx:if="{{item.id!==taskId}}" data-id="{{item.id}}"
@@ -18,7 +17,7 @@
     </view>
   </scroll-view>
   <g-button class="click" bind:tap="showConfirm" text="添加任务" size="mini"></g-button>
-  <g-confirm placeholder="这次番茄时间想做点什么?" bind:sureClick="confirmCreate" bind:cancelClick="cancelCreate"
+  <g-confirm placeholder="这次想做点什么?" bind:sureClick="confirmCreate" bind:cancelClick="cancelCreate"
              visible="{{visible}}"></g-confirm>
   <g-confirm text="{{innerText}}" bind:sureClick="confirmUpdate" bind:cancelClick="cancelUpdate"
              visible="{{updateConfirm}}"></g-confirm>

@@ -15,10 +15,17 @@
 
 .header .picture open-data{
   display: inline-block;
+  overflow: hidden;
+  border-radius: 80rpx;
+  width: 130rpx;
+  height: 130rpx;
+}
+.none{
   border-radius: 80rpx;
   overflow: hidden;
   width: 160rpx;
   height: 160rpx;
+  background: #fff;
 }
 .header .userName{
   margin: 0rpx 80rpx 0 40rpx;

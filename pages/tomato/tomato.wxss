@@ -1,9 +1,7 @@
 /* pages/tomato/tomato.wxss */
-.container{
-  text-align: center;
-}
 .container .title{
   margin-top: 60rpx;
+  text-align: center;
 }
 .container .title text{
   display: block;

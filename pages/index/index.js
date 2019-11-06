@@ -16,7 +16,8 @@ Page({
     updateId: -1,
     loginStatus: false,
     taskId: -1,
-    taskContent: ''
+    taskContent: '',
+    detail:''
   },
   //事件处理函数
   startTomato(){
@@ -61,26 +62,31 @@ Page({
         if(error.statusCode===422){
           wx.showToast({title:'内容未修改',icon:"none",duration:1500})
         }
+        this.setData({
+          updateConfirm: false
+        })
       })
   },
   finished(e) {
     let index = e.currentTarget.dataset.index;
     let id = e.currentTarget.dataset.id;
     this.data.todoList[index].completed = true
-    this.setData({
-      todoList: this.data.todoList
-    })
-    http.put(`/todos/${id}`, { completed: true })
+    http.put(`/todos/${this.data.taskId}`, { completed: true })
     .then(response => {
       let newTodo = response.data.resource
       this.data.todoList[index] = newTodo
       this.setData({
         todoList: this.data.todoList
       })
+      console.log('删除');
       wx.showToast({title:'任务删除成功',icon:"success",duration:1500})
     })
   },
   showConfirm() {
+    if(!this.data.loginStatus){
+      wx.showToast({title:'请登录',icon: 'none'})
+      return
+    }
     this.setData({
       visible: true
     });
@@ -113,10 +119,14 @@ Page({
     });
   },
   onShow: function() {
+    if(wx.getStorageSync('X-token')){
+      this.setData({
+        loginStatus: true,
+      })
+    }
     http.get("/todos?completed=false").then(response => {
       this.setData({
         todoList: response.data.resources,
-        loginStatus: getApp().globalData.loginStatus,
         taskId: -1,
         taskContent: ''
       });

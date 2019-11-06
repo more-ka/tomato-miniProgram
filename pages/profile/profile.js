@@ -8,11 +8,15 @@ Page({
   },
    // 生命周期函数--监听页面显示
   onShow: function () {
+    if(wx.getStorageSync('X-token')){
+      this.setData({
+        loginStatus: true,
+      })
+    }
     http.get('/todos',{is_group:"yes"})
       .then(response=>{
         this.setData({
-          todos: response.data.resources,
-          loginStatus: getApp().globalData.loginStatus
+          todos: response.data.resources
         })
       })
   }

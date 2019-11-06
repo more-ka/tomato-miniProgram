@@ -22,13 +22,13 @@ Component({
     sureClick() {
       this.triggerEvent("sureClick",this.data.value);
       this.setData({
-        text: ""
+        value: ""
       })
     },
     cancelClick() {
       this.triggerEvent("cancelClick");
       this.setData({
-        text: ""
+        value: ""
       })
     },
     watchInput(event) {

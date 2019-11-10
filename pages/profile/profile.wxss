@@ -9,31 +9,31 @@
   align-items: center;
   background: #fff;
   margin-bottom: 24rpx;
-  height: 140rpx;
 }
 
 .header .picture open-data{
   display: inline-block;
   overflow: hidden;
   border-radius: 80rpx;
-  width: 130rpx;
-  height: 130rpx;
+  width: 100rpx;
+  height: 100rpx;
 }
 .none{
   border-radius: 80rpx;
   overflow: hidden;
-  width: 130rpx;
-  height: 130rpx;
+  width: 100rpx;
+  height: 100rpx;
   background: #fff;
 }
 .header .userName{
   margin: 0rpx 80rpx 0 40rpx;
-  font-size: 40rpx; 
-  margin-top: -80rpx;
+  font-size: 36rpx; 
+  /* margin-top: -80rpx; */
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   max-width: 300rpx;
+  flex:1;
 }
 
 .header .contact,

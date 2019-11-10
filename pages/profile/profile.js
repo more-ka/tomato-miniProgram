@@ -17,7 +17,8 @@ Page({
        url: '/pages/index/index'
      });
      wx.showToast({
-       title: '退出登录成功'
+       title: '退出登录成功',
+       duration: 2000
      })
    },
   onShow: function () {

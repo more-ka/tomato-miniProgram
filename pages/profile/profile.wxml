@@ -7,7 +7,7 @@
     <view class="none" wx:else>
       <open-data></open-data>
     </view>
-    <view class="userName title">
+    <view class="userName">
       <navigator url="/pages/login/login" wx:if="{{!loginStatus}}">点击登录账号</navigator>
       <open-data type="userNickName" wx:else></open-data>
     </view>
@@ -20,7 +20,7 @@
       <wxs src="../../utils/format.wxs" module="format" />
       <view class="title">{{format.formatMouth(todo)}}</view>
       <view class="content" wx:for="{{todos[todo]}}" wx:key="index" wx:if="{{item.completed}}">
-        <view class="time">{{format.subTime(item.updated_at)}}</view>
+        <view class="time">{{format.dateFormat(item.created_at)}}</view>
         <view class="text">{{item.description}}</view>
       </view>
     </view>

@@ -1,7 +1,9 @@
 //index.js
 //获取应用实例
 // const {host,t_app_id,t_app_secret} = getApp().globalData
-const { http } = require("../../utils/http.js");
+const {
+  http
+} = require("../../utils/http.js");
 
 Page({
   updateIndex: "",
@@ -17,19 +19,23 @@ Page({
     loginStatus: false,
     taskId: -1,
     taskContent: '',
-    detail:''
+    detail: ''
   },
   //事件处理函数
-  startTomato(){
-    if(this.data.taskContent===''){
-      wx.showToast({title: "请先选择任务",icon:"none"})
+  startTomato() {
+    if (this.data.taskContent === '') {
+      wx.showToast({
+        title: "请先选择任务",
+        icon: "none",
+        duration: 2000
+      })
       return
     }
     wx.navigateTo({
       url: `../tomato/tomato?content=${this.data.taskContent}&id=${this.data.taskId}`
     })
   },
-  currentTask(e){
+  currentTask(e) {
     let id = e.currentTarget.dataset.id
     let content = e.currentTarget.dataset.content
     this.setData({
@@ -37,7 +43,7 @@ Page({
       taskContent: content
     })
   },
-  updateText(e){
+  updateText(e) {
     let content = e.currentTarget.dataset.content
     this.updateIndex = e.currentTarget.dataset.index
     this.updateId = e.currentTarget.dataset.id
@@ -46,11 +52,14 @@ Page({
       innerText: content
     })
   },
-  confirmUpdate(e){
-    http.put(`/todos/${this.updateId}`,{completed:false,description:e.detail })
-      .then(response=>{
+  confirmUpdate(e) {
+    http.put(`/todos/${this.updateId}`, {
+        completed: false,
+        description: e.detail
+      })
+      .then(response => {
         let newTodo = response.data.resource
-        this.data.todoList[this.updateIndex]=newTodo
+        this.data.todoList[this.updateIndex] = newTodo
         this.setData({
           updateConfirm: false,
           todoList: this.data.todoList,
@@ -58,9 +67,13 @@ Page({
           taskContent: newTodo.description
         })
       })
-      .catch(error=>{
-        if(error.statusCode===422){
-          wx.showToast({title:'内容未修改',icon:"none",duration:1500})
+      .catch(error => {
+        if (error.statusCode === 422) {
+          wx.showToast({
+            title: '内容未修改',
+            icon: "none",
+            duration: 2000
+          })
         }
         this.setData({
           updateConfirm: false
@@ -71,21 +84,31 @@ Page({
     let index = e.currentTarget.dataset.index;
     let id = e.currentTarget.dataset.id;
     this.data.todoList[index].completed = true
-    http.put(`/todos/${this.data.taskId}`, { completed: true })
-    .then(response => {
-      let newTodo = response.data.resource
-      this.data.todoList[index] = newTodo
-      this.setData({
-        todoList: this.data.todoList
+    http.put(`/todos/${this.data.taskId}`, {
+        completed: true
       })
-      console.log('删除');
-      wx.showToast({title:'任务删除成功',icon:"success",duration:1500})
-    })
+      .then(response => {
+        let newTodo = response.data.resource
+        this.data.todoList[index] = newTodo
+        this.setData({
+          todoList: this.data.todoList
+        })
+        console.log('删除');
+        wx.showToast({
+          title: '任务删除成功',
+          icon: "success",
+          duration: 2000
+        })
+      })
   },
   showConfirm() {
-    if(!this.data.loginStatus){
+    if (!this.data.loginStatus) {
       console.log('ceshi')
-      wx.showToast({title:'请登录',icon: 'none'})
+      wx.showToast({
+        title: '请登录',
+        icon: 'none',
+        duration: 2000
+      })
       return
     }
     this.setData({
@@ -94,10 +117,16 @@ Page({
   },
   confirmCreate(event) {
     let text = event.detail;
-    if(!text){
-      wx.showToast({title:'未输入任何内容',icon:"none",duration:1500})
-    }else {
-      http.post("/todos", { description: text }).then(response => {
+    if (!text) {
+      wx.showToast({
+        title: '未输入任何内容',
+        icon: "none",
+        duration: 2000
+      })
+    } else {
+      http.post("/todos", {
+        description: text
+      }).then(response => {
         let newTodo = [response.data.resource]
         let newList = newTodo.concat(this.data.todoList);
         this.setData({
@@ -109,18 +138,18 @@ Page({
       });
     }
   },
-  cancelUpdate(){
+  cancelUpdate() {
     this.setData({
       updateConfirm: false
     })
   },
-  cancelCreate(){
+  cancelCreate() {
     this.setData({
       visible: false
     });
   },
   onShow: function() {
-    if(wx.getStorageSync('X-token')){
+    if (wx.getStorageSync('X-token')) {
       this.setData({
         loginStatus: true,
       })

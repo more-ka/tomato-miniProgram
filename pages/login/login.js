@@ -37,7 +37,8 @@ Page({
       .then(response => {
         this.saveMessage(response);
         wx.showToast({
-          title: '登录成功'
+          title: '登录成功',
+          duration: 2000
         })
         wx.reLaunch({
           url: "/pages/index/index"
@@ -47,7 +48,8 @@ Page({
         if(error.statusCode===500){
           wx.showToast({
             title: '授权失败,请重试',
-            icon: 'none'
+            icon: 'none',
+            duration: 2000
           })
         }
       })

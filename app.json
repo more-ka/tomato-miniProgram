@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/history/history",
     "pages/profile/profile",
     "pages/index/index",
     "pages/login/login",
@@ -21,6 +22,12 @@
         "text": "专注",
         "iconPath": "images/total.png",
         "selectedIconPath": "images/total-active.png"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "统计",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
       },
       {
         "pagePath": "pages/profile/profile",

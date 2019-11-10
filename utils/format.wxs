@@ -1,4 +1,3 @@
-
 function formatMouth(data){
   var monthString = data.toString().substring(0,2)
   var dayString = data.toString().substring(2,4)
@@ -6,10 +5,19 @@ function formatMouth(data){
   if(dayString[0]==='0'){ dayString = dayString[1]}
   return monthString+'月'+dayString+'日'
 }
-function subTime(time){
-  return time.substring(11,16)
+function dateFormat(date, format) {
+  var time = getDate(date)
+  var hour = time.getHours()+''
+  var min = time.getMinutes()+''
+  if(hour.length===1){
+    hour =  '0'+hour
+  }
+  if (min.length === 1) {
+    min = '0' + min
+  }
+  return hour + ':' + min
 }
 module.exports = {
-  subTime: subTime,
+  dateFormat: dateFormat,
   formatMouth: formatMouth
 }

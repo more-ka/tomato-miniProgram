@@ -6,14 +6,6 @@ let chart = null;
 var category = [];
 var barData = [];
 
-http.get('/todos',{is_group:"yes"})
-    .then(response=>{
-      todos = response.data.resources
-      for (let key in todos) {
-        category.push(key);
-        barData.push(todos[key].length)
-    }
-  })
 
 function initChart(canvas, width, height) {
   chart = echarts.init(canvas, null, {
@@ -33,23 +25,8 @@ var option = {
         }
     },
     xAxis: {
-        data: category,
-        axisLine: {
-            lineStyle: {
-                color: '#000'
-            }
-        }
+        data: []
     },
-    dataZoom: [{
-      type: 'slider',
-      show: true,
-      xAxisIndex: [0],
-      left: '9%',
-      bottom: 10,
-      start: 50,
-      height: 20,
-      end: 100 //初始化滚动条
-  }],
     yAxis: {
         splitLine: {show: true},
         axisLine: {
@@ -74,34 +51,107 @@ var option = {
                 )
             }
         },
-        data: barData
+        data: []
     }]
 };
   chart.setOption(option);
   return chart;
 }
 
+// http.get('/todos',{is_group:"yes"})
+//     .then(response=>{
+//       todos = response.data.resources
+//       for (let key in todos) {
+//         category.push(key);
+//         barData.push(todos[key].length)
+//     }
+//     chart.setOption({
+//       xAxis: {
+//         data: category,
+//         axisLine: {
+//             lineStyle: {
+//                 color: '#000'
+//             }
+//         }
+//     },
+//     dataZoom: [{
+//       type: 'slider',
+//       show: true,
+//       xAxisIndex: [0],
+//       left: '9%',
+//       bottom: 10,
+//       start: 50,
+//       height: 30,
+//       end: 100 //初始化滚动条
+//   }],
+//     series: [{
+//       data: barData
+//     }]
+//     });
+//   })
+
+
+
 Page({
   onShareAppMessage: function (res) {
     return {
       title: 'ECharts 可以在微信小程序中使用啦！',
-      path: '/pages/index/index',
+      path: '/pages/history/history',
       success: function () { },
       fail: function () { }
     }
   },
   data: {
     todos: {},
+    loginStatus: false,
     ec: {
       onInit: initChart
     }
   },
   onShow(){
+    if (wx.getStorageSync('X-token')) {
+      this.setData({
+        loginStatus: true,
+      })
+    }
+    category = []
+    barData = []
+    http.get('/todos',{is_group:"yes"})
+    .then(response=>{
+      todos = response.data.resources
+      for (let key in todos) {
+        category.push(key);
+        barData.push(todos[key].length)
+    }
+    chart.setOption({
+      xAxis: {
+        data: category,
+        axisLine: {
+            lineStyle: {
+                color: '#000'
+            }
+        }
+    },
+    dataZoom: [{
+      type: 'slider',
+      show: true,
+      xAxisIndex: [0],
+      left: '9%',
+      bottom: 10,
+      start: 50,
+      height: 30,
+      end: 100 //初始化滚动条
+  }],
+    series: [{
+      data: barData
+    }]
+    });
+  })
   },
   onReady() {
     setTimeout(function () {
       // 获取 chart 实例的方式
-    }, 3000);
+    }, 0);
   }
 });
 // 图标有概率出现无数据问题,推测是

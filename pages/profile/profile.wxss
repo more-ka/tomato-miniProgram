@@ -35,7 +35,9 @@
   max-width: 300rpx;
   flex:1;
 }
-
+.login{
+  color: #f6705a;
+}
 .header .contact,
 .header .logout{
   background: transparent;

@@ -8,7 +8,7 @@
       <open-data></open-data>
     </view>
     <view class="userName">
-      <navigator url="/pages/login/login" wx:if="{{!loginStatus}}">点击登录账号</navigator>
+      <navigator url="/pages/login/login" wx:if="{{!loginStatus}}" class="login">点击登录账号</navigator>
       <open-data type="userNickName" wx:else></open-data>
     </view>
     <button class="logout {{loginStatus&&'active'}}" bind:tap="logout">退出</button>

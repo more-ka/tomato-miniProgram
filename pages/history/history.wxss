@@ -4,11 +4,14 @@
   top: 0;
   bottom: 0;
   left: 0;
-  border: 1px solid #000;
   right: 0;
 }
 #mychart-bar{
-  border: 1px solid #000;
   height: 50rpx;
   width: 10rpx;
+}
+.tips{
+  margin-top: 30%;
+  color: #f6705a;
+  text-align: center;
 }

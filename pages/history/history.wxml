@@ -1,4 +1,6 @@
-<view class="container" wx:if="{{loginStatus}}">
-  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+<view class="container">
+  <view class="canvas">
+    <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+  </view>
 </view>
-<view class="tips" wx:else>请登录后查看</view>
+<!-- 真机tips不显示 -->

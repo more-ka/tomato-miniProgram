@@ -1,17 +1,18 @@
 /* pages/history/history.wxss */
 .container{
+  height: 10%;
+  width: 10%;
+  text-align: center;
+}
+.canvas{
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: -1;
 }
 #mychart-bar{
   height: 50rpx;
   width: 10rpx;
-}
-.tips{
-  margin-top: 30%;
-  color: #f6705a;
-  text-align: center;
 }

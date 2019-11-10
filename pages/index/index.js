@@ -93,7 +93,6 @@ Page({
         this.setData({
           todoList: this.data.todoList
         })
-        console.log('删除');
         wx.showToast({
           title: '任务删除成功',
           icon: "success",
@@ -104,7 +103,7 @@ Page({
   showConfirm() {
     if (!this.data.loginStatus) {
       wx.showToast({
-        title: '请登录',
+        title: '请先登录',
         icon: 'none',
         duration: 2000
       })

@@ -32,5 +32,12 @@
   justify-content: center;
 }
 .button{
-  height:500rpx;
+  flex: 0.5;
+
+}
+.wraning{
+  text-align: center;
+  font-size: 36rpx;
+  color: orange;
+  flex: 0.5;
 }

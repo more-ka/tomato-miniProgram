@@ -86,6 +86,7 @@ Page({
   },
   // 时间处理
   formatTime() {
+    console.log(this.data.defaultTime)
     let minute = Math.floor(this.data.defaultTime / 60);
     let second = Math.floor(this.data.defaultTime % 60);
     this.setData({

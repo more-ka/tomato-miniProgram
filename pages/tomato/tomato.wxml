@@ -1,7 +1,7 @@
 <!-- pages/tomato/tomato.wxml -->
 <view class="container">
   <view class="title">
-    <text>当前任务</text>
+    <text wx:if="{{taskContent}}">当前任务</text>
     <text class="taskContent">{{taskContent}}</text>
   </view>
   <view class="clock">
@@ -12,6 +12,7 @@
     <g-button wx:else text="再来一组" change size="mini" bind:tap="again"></g-button>
     <g-button wx:if="{{time!=='00:00'}}" text="完成任务" size="mini" bind:tap="quickFinish"></g-button>
   </view>
+  <view class="wraning" wx:if="{{defaultTime!==0}}">任务进行中, 请不要离开此页面</view>
   <g-confirm wx:if="{{!again}}" visible="{{showConfirm}}" data-value="{{abortedText}}" placeholder="放弃的理由" bind:sureClick="sureAbandon" bind:cancelClick="cancelAbandon"></g-confirm>
   <g-confirm wx:if="{{again}}" visible="{{showConfirm}}" placeholder="这次准备做什么"  bind:sureClick="sureAgain" bind:cancelClick="cancelAgain"></g-confirm>
 </view>

@@ -3,8 +3,8 @@
     "pages/index/index",
     "pages/history/history",
     "pages/profile/profile",
-    "pages/login/login",
-    "pages/tomato/tomato"
+    "pages/tomato/tomato",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",
